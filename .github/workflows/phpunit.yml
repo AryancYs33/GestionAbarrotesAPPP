@@ -33,6 +33,16 @@ jobs:
       - name: Run PHPUnit with Coverage
         run: php Test/tools/phpunit.phar --configuration Test/phpunit.xml --coverage-clover coverage.xml || true
 
+      - name: Check Secret
+        run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "TOKEN VACIO"
+          else
+            echo "TOKEN OK"
+          fi
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
