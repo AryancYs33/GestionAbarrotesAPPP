@@ -21,7 +21,7 @@ jobs:
         with:
           php-version: '8.0'
           extensions: mbstring, dom, xml, xmlwriter, pdo, pdo_mysql, pdo_sqlite
-          coverage: none
+          coverage: xdebug 
 
       - name: Show versions
         run: |
@@ -30,5 +30,5 @@ jobs:
           curl -L https://phar.phpunit.de/phpunit-9.phar -o Test/tools/phpunit.phar
           php Test/tools/phpunit.phar --version
 
-      - name: Run PHPUnit
-        run: php Test/tools/phpunit.phar --configuration Test/phpunit.xml
+      - name: Run PHPUnit with Coverage
+  run: php Test/tools/phpunit.phar --configuration Test/phpunit.xml --coverage-clover coverage.xml 
