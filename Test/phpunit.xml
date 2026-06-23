@@ -4,9 +4,18 @@
          bootstrap="bootstrap.php"
          colors="true"
          verbose="true">
+
     <testsuites>
         <testsuite name="Selected Excel Test Cases">
             <directory>Unit</directory>
         </testsuite>
     </testsuites>
+
+    <coverage>
+        <include>
+            <directory suffix=".php">../models</directory>
+            <directory suffix=".php">../controllers</directory>
+        </include>
+    </coverage>
+
 </phpunit>
